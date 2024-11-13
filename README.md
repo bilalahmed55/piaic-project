@@ -24,7 +24,7 @@ This is a console-based Inventory Management System designed for small businesse
    ```bash
    https://github.com/bilalahmed55/piaic-project.git
 
-##Usage
+## Usage
 
 - Start the program by running the script.
 - Log in using one of the following credentials:
@@ -36,7 +36,7 @@ This is a console-based Inventory Management System designed for small businesse
 - Password: password
 - Depending on the role, select options from the menu to perform various inventory operations.
 
-##Main Menu Options
+## Main Menu Options
 
 1. View Products: View all products in the inventory.
 2. Search Products: Search for products by name or category.
