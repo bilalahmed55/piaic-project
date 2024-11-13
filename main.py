@@ -1,4 +1,4 @@
-# Inventory Management System with Classes and Quit Option
+# Inventory Management System with Classes, Error Handling, and Quit Option
 
 # Sample data for users
 class User:
@@ -28,6 +28,8 @@ class Inventory:
     
     def view_products(self):
         print("\nAll Products:")
+        if not self.products:
+            print("No products in the inventory.\n")
         for product in self.products:
             print(product)
         print()
@@ -78,15 +80,15 @@ class InventoryManagementSystem:
 
     def login(self):
         print("Welcome to the Inventory Management System!")
-        username = input("Enter username: ")
-        password = input("Enter password: ")
-        
-        if username in self.users and self.users[username] == password:
-            print(f"Welcome, {username}!")
-            return username
-        else:
-            print("Invalid username or password!")
-            return None
+        while True:
+            username = input("Enter username: ")
+            password = input("Enter password: ")
+            
+            if username in self.users and self.users[username] == password:
+                print(f"Welcome, {username}!")
+                return username
+            else:
+                print("Invalid username or password! Please try again.\n")
 
     def user_menu(self):
         while True:
@@ -110,7 +112,7 @@ class InventoryManagementSystem:
                 print("Quitting the application...\n")
                 exit(0)  # Exit the program
             else:
-                print("Invalid option, try again.")
+                print("Invalid option, please select a valid menu option.")
 
     def admin_menu(self):
         while True:
@@ -133,18 +135,18 @@ class InventoryManagementSystem:
             elif choice == '3':
                 name = input("Enter product name: ")
                 category = input("Enter product category: ")
-                price = float(input("Enter product price: "))
-                stock = int(input("Enter product stock quantity: "))
+                price = self.get_valid_price()
+                stock = self.get_valid_stock()
                 self.inventory.add_product(name, category, price, stock)
             elif choice == '4':
-                product_id = int(input("Enter product ID to edit: "))
+                product_id = self.get_valid_product_id()
                 name = input("Enter new name: ")
                 category = input("Enter new category: ")
-                price = float(input("Enter new price: "))
-                stock = int(input("Enter new stock quantity: "))
+                price = self.get_valid_price()
+                stock = self.get_valid_stock()
                 self.inventory.edit_product(product_id, name, category, price, stock)
             elif choice == '5':
-                product_id = int(input("Enter product ID to delete: "))
+                product_id = self.get_valid_product_id()
                 self.inventory.delete_product(product_id)
             elif choice == '0':
                 print("Logging out...\n")
@@ -153,7 +155,39 @@ class InventoryManagementSystem:
                 print("Quitting the application...\n")
                 exit(0)  # Exit the program
             else:
-                print("Invalid option, try again.")
+                print("Invalid option, please select a valid menu option.")
+
+    def get_valid_price(self):
+        while True:
+            try:
+                price = float(input("Enter product price: "))
+                if price <= 0:
+                    print("Price must be a positive number. Please try again.")
+                else:
+                    return price
+            except ValueError:
+                print("Invalid input! Please enter a valid number for the price.")
+
+    def get_valid_stock(self):
+        while True:
+            try:
+                stock = int(input("Enter product stock quantity: "))
+                if stock < 0:
+                    print("Stock quantity cannot be negative. Please try again.")
+                else:
+                    return stock
+            except ValueError:
+                print("Invalid input! Please enter a valid number for the stock.")
+
+    def get_valid_product_id(self):
+        while True:
+            try:
+                product_id = int(input("Enter product ID: "))
+                if product_id <= 0:
+                    print("Product ID must be a positive number. Please try again.")
+                return product_id
+            except ValueError:
+                print("Invalid input! Please enter a valid product ID.")
 
     def run(self):
         while True:
