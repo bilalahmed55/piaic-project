@@ -38,11 +38,10 @@ This is a console-based Inventory Management System designed for small businesse
 
 ## Main Menu Options
 
-1. View Products: View all products in the inventory.
-2. Search Products: Search for products by name or category.
-3. Filter by Stock: Filter products by stock level, displaying low-stock products.
-4. Add Product: (Admin only) Add a new product with details like ID, name, category, price, and stock quantity.
-5. Edit Product: (Admin only) Update existing product information.
-6. Delete Product: (Admin only) Remove a product from the inventory.
-0. Logout: Logout of the current session.
-Q. Quit: Quit the program.
+1. View Products"
+2. Search Products"
+3. Add Product"
+4. Edit Product"
+5. Delete Product"
+0. Logout"
+Q. Quit Application"
