@@ -38,10 +38,10 @@ This is a console-based Inventory Management System designed for small businesse
 
 ## Main Menu Options
 
-1. View Products"
-2. Search Products"
-3. Add Product"
-4. Edit Product"
-5. Delete Product"
-0. Logout"
-Q. Quit Application"
+1. View Products
+2. Search Products
+3. Add Product
+4. Edit Product
+5. Delete Product
+0. Logout
+Q. Quit Application
