@@ -1,5 +1,4 @@
 # Inventory Management System (IMS)
-import getpass
 
 # ----------------------------
 # Product Class (OOP Concepts)
@@ -88,7 +87,7 @@ class AuthSystem:
     def login(self):
         """Basic login with username and password validation."""
         username = input("Username: ")
-        password = getpass.getpass("Password: ")
+        password = input("Password: ")  # Replaced getpass with input
         
         # Password validation can be added here
         user = self.users.get(username)
